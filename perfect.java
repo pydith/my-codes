@@ -1,33 +1,36 @@
-import java.util.Scanner;
-import java.util.*;
-class demo2
-{
-  public static void main(String args[])
-  {
-    Scanner scan=new Scanner(System.in);
-    System.out.println("enter the data:");
-    String s=scan.nextLine();
-    String[] words=s.split(" ");
-    for(String d : words)
+public class perfect {
+    public static void main(String args[])
     {
-       for(int i=0;i<d.length();i++)
-       {
-        char ch=d.charAt(i);
-        if(ch>='a'&&ch<='z')
+        long t=0;
+        long total=0;
+        for(long i=1;i<10000;i++)
         {
-            System.out.println(ch+" is a small letter");
-            }
-            else if(ch>='A'&&ch<='Z')
+            long count=0;
+            
+            for(long j=1;j<i;j++)
             {
-                System.out.println(ch+" is a capital letter");
-            }
-            else
-            {
-                System.out.println(ch+" is a special character");
+                if(i%j==0)
+                {
+                    count=count+j;
                 }
                 
-       }
-    }
+            }
             
-  }
-}
+                if(count==i)
+                {
+                    
+                    System.out.println(i+"is a perfect number");
+                    t++;
+                }
+                if(t<=10&&count==i)
+                {
+                    total=total+i;
+                }
+                
+            }
+            System.out.println("the total of ten perfect numbers:" +total);
+        }
+    }
+    
+    
+
