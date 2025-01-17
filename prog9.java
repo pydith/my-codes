@@ -1,24 +1,14 @@
-class key
-{
-    public int add(int a,int b)
-    {
-        return a+b;
-    }
-    public int add(int a,int b,int c)
-    {
-        return a+b+c;
-    }
-    public int add(int a)
-    {
-        return a;
-    }
-  public static void main(String args[])
-  {
-    key obj=new key();
-    int r=obj.add(10);
-    System.out.println("the addition is:" +r);
+import java.util.StringTokenizer;
 
-   
-   
-  }
+public class prog9 {
+    public static void main(String[] args) {
+        StringTokenizer sb = new StringTokenizer("Hello world welcvome to miracle");
+        System.out.println(sb.countTokens());
+        while(sb.hasMoreTokens())
+        {
+            System.out.println(sb.nextToken());
+            
+        }
+        
+    }
 }

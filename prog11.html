@@ -1,0 +1,20 @@
+<html>
+    <head>
+<script>
+    function nsum(){
+        let a=parseFloat(document.getElementById('fn').value);
+        let sum=0;
+        for(let i=1;i<=a;i++)
+    {
+          sum +=i;
+    }
+    alert(sum);
+    }
+</script>
+</head>
+    <body>
+        enter number:
+        <input type="number" id="fn" name="fna" placeholder="enter number">
+        <input type="button" value="submit" onclick="nsum()">
+    </body>
+</html>

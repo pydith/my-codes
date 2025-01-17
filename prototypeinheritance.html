@@ -1,0 +1,62 @@
+<html>
+    <body>
+        <script>
+            function fun(name,id){
+                this.name=name;
+                this.id=id;
+            }
+            fun.prototype.greet=function(){
+                document.write("hii welocome to miracle company");
+            };
+
+            function student(name,id,grade){
+                fun.call(this,name,id);
+                this.grade=grade;
+            }
+
+
+            student.prototype=Object.create(fun.prototype);
+
+            student.prototype.study =function(){
+               document.write(`<br>${this.name} is working in miracle company`);
+            };
+
+            
+            const student1=new student('durga',"5415",'A');
+            student1.greet();
+            student1.study();
+        </script>
+    </body>
+</html>
+
+<!-- <html>
+    <body>
+        <script>
+            function fun(name, id) {
+                this.name = name;
+                this.id = id;
+            }
+
+            fun.prototype.greet = function() {
+                document.write("Hii, welcome to Miracle Company. <br>");
+            };
+
+            function student(name, id, grade) {
+                fun.call(this, name, id);
+                this.grade = grade;
+            }
+
+            student.prototype = Object.create(fun.prototype); 
+            student.prototype.constructor = student;
+
+            student.prototype.study = function() {
+                document.write(`${this.name} is working in Miracle Company. <br>`);
+            };
+
+            const student1 = new student('Durga', '5415', 'A');
+
+            student1.greet();   
+            student1.study();   
+        </script> -->
+    <!-- </body>
+</html> -->

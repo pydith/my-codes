@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script>
+            function even(){
+                var v=parseFloat(document.getElementById('num2').value);
+                if(v%2==0)
+            {
+                alert("even number");
+            }
+            else{
+                alert("odd number");
+            }
+            }
+        </script>
+    </head>
+    <body>
+        enter number:
+        <input type="number" id="num2" name="fname" placeholder="enter number"><br>
+        <input type="button"  value="submit" onclick="even()">
+    </body>
+</html>

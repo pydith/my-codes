@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <h1 style="color: blue;">inline css is applied</h1>
+        <script>
+            class demo{
+                constructor(name,age){
+                    this.name=name;
+                    this.age=age;
+                }
+
+                display(){
+                   document.write(`${this.name} has ${this.age} years old`);
+                }
+            }
+            class car extends demo{
+                display(){
+                    document.write(this.name,"has",this.age,"years old");
+                }
+            }
+            let cars=new car('durga',"19");
+            cars.display();
+        </script>
+    </body>
+</html>

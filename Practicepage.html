@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .google-logo img {
+            width: 272px; /* Google logo width */
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .search-box {
+            width: 500px;
+            height: 40px;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 24px;
+            border: 1px solid #dcdcdc;
+            margin-right: 10px;
+        }
+
+        .search-btn {
+            background-color: #f8f8f8;
+            border: 1px solid #dcdcdc;
+            border-radius: 24px;
+            font-size: 14px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .search-btn:hover {
+            background-color: #f1f1f1;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .footer a {
+            color: #1a0dab;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Google Logo -->
+        <div class="google-logo">
+            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png" alt="Google Logo">
+        </div>
+
+        <!-- Search Box -->
+        <div class="search-container">
+            <form action="#" method="get">
+                <input type="text" name="q" placeholder="Search Google or type a URL" class="search-box">
+                <button type="submit" class="search-btn">Google Search</button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                <a href="https://www.google.com/intl/en/about/">About</a> | 
+                <a href="https://www.google.com/services/">Store</a> | 
+                <a href="https://www.google.com/preferences">Privacy</a> | 
+                <a href="https://policies.google.com/terms">Terms</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

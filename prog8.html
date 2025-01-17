@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <script>
+            function demo(){
+                var v=parseFloat(document.getElementById('fnum').value)
+                var sum=1;
+              for(var i=1;i<=v;i++)
+             {
+             sum=sum*i;
+             }           
+             document.write("the factorial:" +sum);
+            }
+        </script>
+    </head>
+    <body>
+        enter a number:
+        <input type="number" id="fnum" name="fname" placeholder="factorial"><br>
+        <input type="button" value="submit" onclick="demo()">
+    </body>
+</html>

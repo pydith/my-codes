@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script>
+            function fun2(){
+                var v=parseFloat(document.getElementById('pnum').value);
+                var count=0;
+                for(var i=1;i<=v;i++)
+            {
+                if(v%i==0)
+            {
+                count++
+            }
+            }
+            if(count==2)
+            {
+                alert("prime number");
+            }else{
+                alert("not a prime");
+            }
+        }
+            count=0;
+        </script>
+    </head>
+    <body>
+        <center>
+        enter a number:
+      <input type="number" id="pnum" name="pname" placeholder="enter number"><br>
+      <input type="button" value="submit" onclick="fun2()">  
+    </center>
+    </body>
+</html>

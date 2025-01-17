@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script>
+            function reverse(){
+                var v = document.getElementById('str').value;
+                var s1='';
+                for(var i = v.length-1;i >= 0;i--)
+            {
+                s1+= v[i];
+            }
+            if(s1==v)
+            {
+                alert(" palindrome" + v);
+            }
+            else{
+                alert("not a palindrome" + v);
+            }
+            }
+        </script>
+    </head>
+    <body>
+        enter a string:
+        <input type="text" id="str" name="sname" placeholder="enter string">
+        <input type="button" value="submit" onclick="reverse()">
+    </body>
+</html>

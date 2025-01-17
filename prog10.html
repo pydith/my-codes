@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+       
+        <script>
+            function sum() {
+            let r = Number(document.getElementById("n1").value);
+            let r1 = r;
+            let sum = 0;
+            let t;
+            while (r > 0) 
+            {
+                t = r % 10;
+                sum += t * t * t; 
+                r = parseInt(r / 10); 
+                   
+                }
+                if (sum == r1) {
+                    window.alert("Armstrong");
+                   } else {
+                    window.alert("Not Armstrong");
+                  }
+            }
+        
+        
+      
+        </script>
+    </head>
+    <body>
+        <center>
+        <div class="full">
+     
+        <h1>enter number: </h1>
+        <label>Enter a number :</label>
+        <input type="number" name="n1" id="n1" placeholder="Enter a number">
+        
+        <p id="res"></p>
+        <button onclick="sum()">Check</button>
+        
+        
+        </div>
+    </center>
+    </body>
+</html>

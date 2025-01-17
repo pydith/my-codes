@@ -1,17 +1,24 @@
-class prog1{
-    public static void main(String args[])
-    {
-        int i=23,j=30;
-        int add=i+j;
-        int sub=i-j;
-        int mul=i*j;
-        int div=i/j;
-        int res=i%j;
-        System.out.println("the addition od two numbers:" +add);
-        System.out.println("the subtraction od two numbers:" +sub);
-        System.out.println("the multiplication od two numbers:" +mul);
-        System.out.println("the division od two numbers:" +div);
-        System.out.println("the result od two numbers:" +res);
+import java.util.HashSet;
+
+public class prog4
+{
+    public static int lengthOfLongestSubstring(String s) {
+        HashSet<Character> set = new HashSet<>();
+        int left = 0, right = 0, maxLength = 0;
         
+        while (right < s.length()) {
+            if (!set.contains(s.charAt(right))) {
+                set.add(s.charAt(right++));
+                maxLength = Math.max(maxLength, right - left);
+            } else {
+                set.remove(s.charAt(left++));
+            }
+        }
+        return maxLength;
+    }
+
+    public static void main(String[] args) {
+        String s = "abcabcbb";
+        System.out.println(lengthOfLongestSubstring(s));  // Output: 3
     }
 }

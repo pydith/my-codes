@@ -1,0 +1,29 @@
+
+
+<html>
+    <body>
+        <script>
+            function animal(name){
+                const obj={};
+                this.name = name;
+
+                this.sound = function() {
+                    document.write(`Generic sound by ${this.name}<br>`);
+                };
+            }
+
+            function cat(name, breed) {
+                animal.call(this, name);  
+                this.breed = breed;
+
+                this.sound = function() {
+                    document.write(`${this.breed} It is a cat<br>`);
+                };
+            }
+
+            let cats = new cat('Kutty', 'Alaska');
+            cats.sound();
+            
+        </script>
+    </body>
+</html>

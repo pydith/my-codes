@@ -1,0 +1,48 @@
+<html>
+     <head>
+        <script>
+        function add(){
+            var a=parseFloat(document.getElementById('firstnum').value);
+            var b=parseFloat(document.getElementById('secondnum').value);
+            var c=a+b;
+            console.log("the addition is:"+c);
+        }
+        function sub(){
+            var a=parseFloat(document.getElementById('firstnum').value);
+            var b=parseFloat(document.getElementById('secondnum').value);
+            var c=a-b;
+            document.write("the substraction is:"+c);
+        }
+        function mul(){
+            var a=parseFloat(document.getElementById('firstnum').value);
+            var b=parseFloat(document.getElementById('secondnum').value);
+            var c=a*b;
+            window.alert("the miltiplication is:"+c);
+        }
+        function div(){
+            var a=parseFloat(document.getElementById('firstnum').value);
+            var b=parseFloat(document.getElementById('secondnum').value);
+            var c=a/b;
+            document.getElementById('res').innerHTML= "division is:" +c;
+        }
+        </script>
+        </head>
+    <body>
+        <center>
+           
+            <h3>Arthimetic operations</h3>
+           
+        <form id="fid" name="fname">
+           First number:
+           <input type="number"  id="firstnum" name="firstnumber" placeholder="enter first number">
+             second number:
+           <input type="number" id="secondnum" name="secondnumber" placeholder="enter second number">
+           <p id="res"></p>   
+        </form>
+        <input type="button" id="add" name="addition"  value="add" onclick="add()">
+        <input type="button" id="sub" name="subtraction"  value="subt" onclick="sub()">
+        <input type="button" id="multi" name="multi"  value="multi" onclick="mul()">
+        <input type="button" id="div" name="division"  value="div" onclick="div()">
+        </center>
+    </body>
+    </html>

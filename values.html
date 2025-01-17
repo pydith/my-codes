@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Values</title>
+</head>
+<body>
+    <h1>Received values:</h1>
+    <div id="result"></div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const fields = [
+            { name: 'Full Name', key: 'firstn' },
+            { name: 'Father Name', key: 'fathername' },
+            { name: 'Phone Number', key: 'phnm' },
+            { name: 'Email', key: 'eml' },
+            { name: 'Username', key: 'user1' },
+            { name: 'Password', key: 'pwd' },
+            { name: 'Pincode', key: 'code' },
+            { name: 'Description', key: 'yoss' }
+        ];
+
+        let resultHTML = '';
+        fields.forEach(field => {
+            const value = params.get(field.key);
+            if (value) {
+                resultHTML += `${field.name}: ${value}<br>`;
+            }
+        });
+
+        document.getElementById('result').innerHTML = resultHTML || "No data submitted.";
+    </script>
+</body>
+</html>

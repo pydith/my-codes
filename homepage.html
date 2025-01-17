@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Autism Spectrum Disorder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Left side navigation */
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            padding: 20px;
+            color: white;
+            height: 100%;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 14px;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Main content area */
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            overflow-y: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        .search-box {
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .content-section {
+            margin-top: 20px;
+        }
+
+        .help-content,
+        .disease-list,
+        .about-content {
+            margin-top: 20px;
+        }
+
+        .disease-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .disease-list ul li {
+            padding: 8px;
+            background-color: #e2f5e0;
+            border: 1px solid #ddd;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .disease-list ul li:hover {
+            background-color: #d4f1d2;
+        }
+
+        .disease-description {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9f7df;
+            border-radius: 5px;
+        }
+
+        .logout-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Left Sidebar with Navigation -->
+        <div class="sidebar">
+            <a href="#" onclick="showSection('about')">About</a>
+            <a href="#" onclick="showSection('help')">Help</a>
+            <a href="#" onclick="showSection('diseases')">List of Diseases</a>
+            <a href="#" onclick="showSection('search')">Search Disease</a>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Header with title -->
+            <div class="header">
+                Welcome to Autism Spectrum Disorder Support
+            </div>
+
+            <!-- Logout Button at the top-right corner -->
+            <button class="logout-button" onclick="logout()">Logout</button>
+
+            <!-- Content Sections -->
+            <div id="about" class="content-section" style="display:none;">
+                <h2>About Autism Spectrum Disorder</h2>
+                <p>Autism Spectrum Disorder (ASD) is a developmental disorder that affects communication, behavior, and social interaction. It is called a "spectrum" because it manifests differently in each person.</p>
+            </div>
+
+            <div id="help" class="content-section" style="display:none;">
+                <h2>Help</h2>
+                <ul>
+                    <li><strong>Account Issues:</strong> If you're facing issues with your account, please reach out to support.</li>
+                    <li><strong>Technical Issues:</strong> If you encounter any technical difficulties while using the website, contact us via email.</li>
+                    <li><strong>Privacy Policy:</strong> We are committed to protecting your privacy. Read our privacy policy for more information.</li>
+                </ul>
+            </div>
+
+            <div id="diseases" class="content-section" style="display:none;">
+                <h2>List of Diseases</h2>
+                <ul class="disease-list">
+                    <li onclick="showDiseaseDetails('Autism Spectrum Disorder')">Autism Spectrum Disorder</li>
+                    <li onclick="showDiseaseDetails('ADHD')">Attention Deficit Hyperactivity Disorder (ADHD)</li>
+                    <li onclick="showDiseaseDetails('Schizophrenia')">Schizophrenia</li>
+                    <li onclick="showDiseaseDetails('Dyslexia')">Dyslexia</li>
+                    <li onclick="showDiseaseDetails('Cerebral Palsy')">Cerebral Palsy</li>
+                </ul>
+                <div id="diseaseDescription" class="disease-description" style="display:none;">
+                    <h3 id="diseaseTitle"></h3>
+                    <p id="diseaseDetails"></p>
+                </div>
+            </div>
+
+            <div id="search" class="content-section" style="display:none;">
+                <h2>Search Disease</h2>
+                <input type="text" class="search-box" id="diseaseSearch" placeholder="Search for a disease..." oninput="searchDisease()">
+                <div id="searchResults"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Function to show the relevant section based on the clicked link
+        function showSection(section) {
+            const sections = ['about', 'help', 'diseases', 'search'];
+            sections.forEach(sec => {
+                document.getElementById(sec).style.display = (sec === section) ? 'block' : 'none';
+            });
+        }
+
+        // Function to show disease details
+        function showDiseaseDetails(diseaseName) {
+            const diseaseDetails = {
+                "Autism Spectrum Disorder": "Autism Spectrum Disorder (ASD) is a developmental disorder that affects communication and behavior. People with ASD often have difficulties with social interactions, communication, and can have restricted interests and behaviors.",
+                "ADHD": "Attention Deficit Hyperactivity Disorder (ADHD) is a neurological disorder characterized by inattention, hyperactivity, and impulsivity.",
+                "Schizophrenia": "Schizophrenia is a severe mental illness characterized by distorted thinking, perceptions, emotions, and behavior. It affects how a person thinks, feels, and behaves.",
+                "Dyslexia": "Dyslexia is a learning disorder characterized by difficulty reading, spelling, and writing despite normal intelligence.",
+                "Cerebral Palsy": "Cerebral palsy is a group of neurological disorders that affect movement and muscle tone, often caused by brain damage during or before birth."
+            };
+
+            document.getElementById('diseaseTitle').innerText = diseaseName;
+            document.getElementById('diseaseDetails').innerText = diseaseDetails[diseaseName];
+            document.getElementById('diseaseDescription').style.display = 'block';
+        }
+
+        // Search disease function
+        function searchDisease() {
+            const searchQuery = document.getElementById('diseaseSearch').value.toLowerCase();
+            const diseaseNames = ["Autism Spectrum Disorder", "ADHD", "Schizophrenia", "Dyslexia", "Cerebral Palsy"];
+            const results = diseaseNames.filter(name => name.toLowerCase().includes(searchQuery));
+            const resultsContainer = document.getElementById('searchResults');
+
+            resultsContainer.innerHTML = results.length > 0 ? results.join('<br>') : 'No results found';
+        }
+
+        // Logout function
+        function logout() {
+            // Redirect user to login page
+            window.location.href = "frontend.html";  // Replace with actual login page URL
+        }
+    </script>
+
+</body>
+</html>

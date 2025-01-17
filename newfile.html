@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 30%;
+            margin: auto;
+        }
+        input, select, textarea {
+            width: 40%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -8px;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Registration Form</h1>
+<form id="registrationForm">
+    <!-- <pre> -->
+    <label for="fname">First Name:</label>
+    <input type="text" id="name" placeholder="Enter First Name" onblur="validateFullName()">
+    <div id="ferror" class="error"></div>
+    <label for="lname">Last Name:</label>
+    <input type="text" id="name" placeholder="Enter Last Name" onblur="validateFullName()">
+    <div id="lerror" class="error"></div>
+    <label for="fathername">Father's Name:</label>
+    <input type="text" id="fname" placeholder="Enter Father's Name" onblur="validateFatherName()">
+    <div id="fatherError" class="error"></div>
+    <label for="phno">Phone Number:</label>
+    <input type="tel" id="phno" placeholder="Enter Phone Number" onblur="validatePhoneNumber()">
+    <div id="phError" class="error"></div>
+    <label for="em">Your Email:</label>
+    <input type="email" id="em" placeholder="Enter Email" onblur="validateEmail()">
+    <div id="emError" class="error"></div>
+    <label for="user">Username:</label>
+    <input type="text" id="user" placeholder="Enter Username" onblur="uservalidate()">
+    <div id="usrError" class="error"></div>
+    <label for="pd">Password:</label>
+    <input type="password" id="pd" placeholder="Enter Password" onblur="validatepass()">
+    <div id="psdError" class="error"></div>
+    <label for="pd1">Confirm Password:</label>
+    <input type="password" id="pd1" placeholder="Confirm Password" onblur="validatepass1()">
+    <div id="psd1Error" class="error"></div>
+    Gender :
+    <input style="margin-left: 0px; width: 20%;" type="radio" id="r1" name="radio" value="Male">Male</td>
+    <input style="margin-left: 0px; width: 20%; " type="radio" id="r1" name="radio" value="Female">Female</td>
+  
+    
+    <label for="pin">Pincode:</label>
+    <input type="text" id="pin" placeholder="Enter Pincode" onblur="eval()">
+    <div id="pnError" class="error"></div>
+    <label for="con">Your Country:</label>
+    <select id="con">
+        <option value="India">India</option>
+        <option value="China">China</option>
+        <option value="Pakistan">Pakistan</option>
+        <option value="Bangladesh">Bangladesh</option>
+        <option value="Nepal">Nepal</option>
+    </select><br>
+    <label for="ste">Your State:</label>
+    <select id="ste">
+        <option value="AndhraPradesh">Andhra Pradesh</option>
+        <option value="Telangana">Telangana</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Tamilnadu">Tamil Nadu</option>
+        <option value="Karnataka">Karnataka</option>
+    </select><br>
+    <label for="your">Description:</label><br>
+    <textarea id="your" placeholder="Enter your description..." rows="3" cols="40" onblur="self()"></textarea>
+    <div id="descError" class="error"></div><br>
+    <input style="margin-left: 0px; width: 10%;" type="checkbox" id="check" onblur="checkb()">
+    I agree with the terms and conditions
+    <div id="checkError" class="error"></div>
+    <button type="button" onclick="validateForm()">Submit</button>
+    <!-- </pre> -->
+</form>
+
+<script>
+
+           function validateForm() 
+           {
+          validateFullName();
+          validateFatherName();
+          validatePhoneNumber();
+          validateEmail();
+          uservalidate();
+          validatepass();
+          validatepass1();
+          eval();
+          self();
+          checkb();
+     
+         const errors = document.querySelectorAll('div[style*="color: red;"]');
+           for (let error of errors) {
+             if (error.innerHTML !== "") {
+                 return false; // Prevent form submission if there's an error
+              }
+           }
+ 
+            const v0 = encodeURIComponent(document.getElementById("name").value);
+            const v1 = encodeURIComponent(document.getElementById("fname").value);
+            const l = encodeURIComponent(document.getElementById("phno").value);
+            const e = encodeURIComponent(document.getElementById("em").value);
+            const u = encodeURIComponent(document.getElementById("user").value);
+            const p = encodeURIComponent(document.getElementById("pd").value);
+            const s = encodeURIComponent(document.getElementById("pin").value);
+            const b = encodeURIComponent(document.getElementById("your").value);
+        
+            const url = `values.html?firstn=${v0}&fathername=${v1}&phnm=${l}&eml=${e}&user1=${u}&pwd=${p}&code=${s}&yoss=${b}`;
+     
+     
+              window.location.href = url;
+          
+              return false; 
+        }
+ 
+     function validateFullName() {
+             const v = document.getElementById("name");
+             const err = document.getElementById('ferror');
+             const reg = /^[a-zA-Z ]*$/;
+             err.innerHTML = "";
+             err.style.display="none";
+ 
+             if (v.value.length == '') {
+                 err.innerHTML = "Field should not be empty";
+                 err.style.display="block";
+             } else if (v.value.trim().length < 6) {
+                 err.innerHTML = "Must be greater than 6 characters";
+                 err.style.display="block";
+             } else if (v.value.trim().length > 15) {
+                 err.innerHTML = "Must be less than 15 characters";
+                 err.style.display="block";
+             } else if (!v.value.match(reg)) {
+                 err.innerHTML = "Must be letters only";
+                 err.style.display="block";
+             }
+            
+       }
+ 
+         function validateFatherName() {
+             const v1 = document.getElementById("fname");
+             const err1 = document.getElementById('error');
+             const reg = /^[a-zA-Z ]+$/;
+             err1.innerHTML = "";
+ 
+             if (v1.value.length == '') {
+                 err1.innerHTML = "Field should not be empty";
+             } else if (v1.value.trim().length < 6) {
+                 err1.innerHTML = "Must be greater than 6 characters";
+             } else if (v1.value.trim().length > 15) {
+                 err1.innerHTML = "Must be less than 15 characters";
+             } else if (!v1.value.match(reg)) {
+                 err1.innerHTML = "Must be letters only";
+             }
+         }
+ 
+         function validatePhoneNumber() {
+             const l = document.getElementById("phno");
+             const er = document.getElementById("phError");
+             er.innerHTML = "";
+ 
+             if (l.value.length == '') {
+                 er.innerHTML = "Field must be filled";
+             } else if (l.value.length < 6) {
+                 er.innerHTML = "Must be greater than 4 digits";
+             } else if (l.value.length > 10) {
+                 er.innerHTML = "Must be less than 11 digits";
+             }
+         }
+ 
+         function validateEmail() {
+             const e = document.getElementById("em");
+             const e1 = document.getElementById("emError");
+             const reg1 = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+             e1.innerHTML = "";
+ 
+             if (e.value.length == '') {
+                 e1.innerHTML = "Please enter your email";
+             } else if (!e.value.match(reg1)) {
+                 e1.innerHTML = "Please enter a valid email address";
+             }
+         }
+ 
+         function uservalidate(){
+             const u=document.getElementById("user");
+             const e4=document.getElementById("usr");
+             const re=/^[a-zA-z0-9]*$/;
+             e4.innerHTML="";
+             if(u.value.length == ''){
+                 e4.innerHTML="please enter username";
+             }
+         }
+ 
+         function validatepass() {
+             const p = document.getElementById("pd");
+             const e2 = document.getElementById("psd");
+             const reg2 = /^[a-zA-Z0-9]*$/;
+             e2.innerHTML = "";
+ 
+             if (p.value.length == '') {
+                 e2.innerHTML = "Please enter a password";
+             }else if(p.value.length<8){
+                e2.innerHTML="the password must be 8 charcters";
+             }else if (!p.value.match(reg2)) {
+                 e2.innerHTML = "Enter a valid password (letters and numbers only)";
+             }
+         }
+ 
+         function validatepass1() {
+             const p = document.getElementById("pd");
+             const p1 = document.getElementById("pd1");
+             const e3 = document.getElementById("psd1");
+             e3.innerHTML = "";
+ 
+             if (p1.value.length == '') {
+                 e3.innerHTML = "Please confirm your password";
+             }else if(p1.value.length<8)
+             {
+               e3.innerHTML="passowrd must 8 characters";
+             } else if (p.value !== p1.value) {
+                 e3.innerHTML = "Passwords do not match";
+             }
+         }
+ 
+         function eval()
+         {
+             const s=document.getElementById("pin");
+             const p=document.getElementById("pn");
+             const reg=/^[0-9]*$/;
+             p.innerHTML="";
+             if(s.value.length == '')
+         
+             {
+             p.innerHTML="please enter pincode";
+           }else if(s.value.length<3)
+          {
+             p.innerHTML="must greater than 3 char";
+          }else if(s.value.length>7)
+          {
+             p.innerHTML="less than 6 char";
+          }
+          else if(!s.value.match(reg))
+          {
+             p.innerHTML="enter numbers only";
+          }
+ 
+         }
+ 
+         function self() {
+             const b = document.getElementById("your");
+             const e = document.getElementById("selferr");
+             e.innerHTML = "";
+ 
+             if (b.value.length == '') {
+                 e.innerHTML = "Field must be filled";
+             } else if (b.value.length < 150) {
+                 e.innerHTML = "Min 150 char required.";
+             } else if (b.value.length >= 300) {
+                 e.innerHTML = "not more than 300 char";
+             }
+         }
+ 
+ 
+         function checkb(){
+             const c1=document.getElementById("check");
+             const e5=document.getElementById("chec");
+             e5.innerHTML="";
+             if(!c1.checked)
+         {
+             e5.innerHTML="this field must be checked";
+         }
+         }
+ 
+     </script>
+
+</body>
+</html>

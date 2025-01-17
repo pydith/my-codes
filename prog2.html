@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script>
+            function fun1(){
+                var v=parseFloat(document.getElementById('firstnum').value);
+                var v1=parseFloat(document.getElementById('secondnum').value)
+                var v3=v+v1;
+                document.write(v3);
+            }
+        </script>
+    </head>
+    <body>
+        enter first number:
+        <input type="number" id="firstnum" value="num1" placeholder="enter first number"><br><br>
+        enter second number:
+        <input type="number" id="secondnum" value="num2" placeholder="enter second number"><br><br>
+        <input type="button" value="submit" onclick="fun1()">
+    </body>
+</html>

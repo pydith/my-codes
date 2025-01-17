@@ -1,0 +1,119 @@
+<html>
+    <head>
+    </head>
+    <center>
+    <body>
+        
+        Enter Full Name:
+        <input type="text"  id="name" name="firstn" placeholder="enter name" onmouseleave="fun()">
+        <div id="ferror" style="color: red; "></div><br><br>
+         Enter Father Name:
+         <input type="text" id="fname" name="fathername" placeholder="enter father name" onmouseleave="fun1()"><br><br>
+         <div id="error" style="color: red; "></div><br>
+         Enter phone number:
+         <input type="number" id="phno" name="phnm" placeholder="enter phone number" onmouseleave="phno()">
+         <div id="err" style="color: red; "></div><br>
+         Enter your email:
+         <input type="email" id="em" name="eml" placeholder="enter email" onmouseleave="emi()">
+         <div id="emerr"  style="color: red; "></div>
+         <!-- <input type="button" value="submit" onmouseleave="fun()"> -->
+      
+    </center>
+        <script>
+          
+            function fun()
+          {
+            var v=document.getElementById("name");
+            var err=document.getElementById('ferror');
+            const reg=/^[a-zA-z ]*$/;
+            err.innerHTML="";
+            err.style.display="none";
+            
+            if(v.value.length ==''){
+                err.innerHTML="field should not be empty";
+                err.style.display="block";
+            }
+             else if(v.value.trim().length < 6)
+             {
+               err.innerHTML="must be greater than 6 char";
+               err.style.display="block";
+             }else if(v.value.trim().length > 15)
+             {
+              err.innerHTML="must be less than 15 char..";
+              err.style.display="block";
+             }else if(!v.value.match(reg))
+             {
+              err.innerHTML="must be letters only";
+              err.style.display="block";
+             }
+         }
+         function fun1()
+         {
+            var v1=document.getElementById("fname");
+            var err1=document.getElementById('error');
+            const reg=/^[a-zA-z ]*$/;
+            err1.innerHTML="";
+            err1.style.display="none";
+            
+            
+            if(v1.value.length ==''){
+                err1.innerHTML="field should not be empty";
+                err1.style.display="block";
+            }
+             else if(v1.value.trim().length < 6)
+             {
+               err1.innerHTML="must be greater than 6 char";
+               err1.style.display="block";
+             }else if(v1.value.trim().length > 15)
+             {
+              err1.innerHTML="must be less than 15 char..";
+              err1.style.display="block";
+             }else if(!v1.value.match(reg))
+             {
+              err1.innerHTML="must be letters only";
+              err1.style.display="block";
+             }
+         } 
+
+        function phno(){
+            let l=document.getElementById("phno");
+            let er=document.getElementById("err");
+            const reg=/^[0-9]*$/;
+            er.innerHTML="";
+            er.style.display="none";
+            if(l.value.length == ''){
+                er.innerHTML="field must be filled";
+                er.style.display="block";
+            }
+            else if(l.value.length<4){
+                er.innerHTML="must be greater than 4 num";
+                er.style.display="block";
+            }
+            else if(l.value.length>11)
+            {
+                er.innerHTML="must be less than 11 num";
+                er.style.display="block";
+            }
+        }
+         
+        function emi(){
+            let e=document.getElementById("em");
+            let e1=document.getElementById("emeer");
+            const reg1=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}*$/;
+            e1.innerHTML="";
+            e1.style.display="none";
+            if(e.value.length=='')
+        {
+            e1.innerHTML="please enter ur email";
+            e1.style.display="block";
+        }else if(!e.value.match(reg1))
+        {
+           e1.innerHTML="please enter a email in correct manner";
+           e1.style.display="block";
+        }
+
+        }
+        
+          </script>
+    </body>
+</html>

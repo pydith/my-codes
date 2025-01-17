@@ -1,0 +1,44 @@
+<html>
+    <body>
+        <script>
+            function def(){
+                document.writeln("<br/>screen.width: "+screen.width);  
+                document.writeln("<br/>screen.height: "+screen.height);  
+                document.writeln("<br/>screen.availWidth: "+screen.availWidth);  
+                document.writeln("<br/>screen.availHeight: "+screen.availHeight);  
+                document.writeln("<br/>screen.colorDepth: "+screen.colorDepth);  
+                document.writeln("<br/>screen.pixelDepth: "+screen.pixelDepth);  
+            }
+
+        
+                
+
+                const button = document.getElementById('clickButton');
+
+                  button.addEventListener('click', function() {
+                 alert('Button was clicked!');
+                });
+
+
+            
+            function fun(){
+               document.write(navigator.appCodeName+"<br>");
+               document.write(navigator.appName+"<br>");
+               document.write(navigator.appVersion+"<br>");
+               document.write(navigator.cookieEnabled+"<br>");
+               document.write(navigator.userAgent+"<br>");
+               document.write(navigator.userActivation+"<br>");
+               document.write(navigator.languages+"<br>");
+               document.write(navigator.userlanguage+"<br>");
+               document.write(navigator.plugins+"<br>");
+               document.write(navigator.systemlanguage+"<br>");
+               document.write(navigator.mimeTypes+"<br>");
+               document.write(navigator.platform+"<br>");
+               document.write(navigator.onLine+"<br>");
+            }
+        </script>
+        <input type="button" value="submit" onclick="def()">
+        <input type="button" value="submit" onclick="fun()">
+        <button id="clickButton">Click Me</button>
+    </body>
+</html>
